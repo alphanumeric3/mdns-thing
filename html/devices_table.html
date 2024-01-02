@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			html { font-family: sans-serif; }
+		</style>
+	</head>
+	<body>
+		<h1>Devices</h1>
+		<table>
+		<thead>
+			<td>Name</td>
+			<td>Hostname</td>
+			<td>IP</td>
+			<td>Service</td>
+			<td>TXT</td>
+		</thead>
+		<tbody>
+		{% for device in devices %}
+		<tr class="device">
+			<td>{{ device["hostname"] }}</td>
+			<td>{{ device["ip"] }})</td>
+			<td><code>{{ device["service"] }}</code></td>
+			<td>
+			<ul>
+			{% for key in device["txt"] %}
+				<li><b>{{ key }}</b>: {{ device["txt"][key] }}</li>
+			{% endfor %}
+			</ul>
+			</td>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</body>
+</html>
